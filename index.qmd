@@ -674,6 +674,30 @@ deneggs::map_eggs_hotspots(betas = denmex::eggs_betas_04_campeche,
 ```
 
 
+### [**Ciudad del Carmen**]{style="color:#990000"}
+
+```{r vector_hotspots_carmen, dpi = 300, warning=FALSE, message=FALSE}
+deneggs::map_eggs_hotspots(betas = denmex::eggs_betas_04_campeche,
+                           locality = "Ciudad del Carmen",
+                           cve_edo = "04",
+                           palette = rcartocolor::carto_pal,
+                           name = "SunsetDark",
+                           static_map = FALSE)
+```
+
+
+
+### [**Escarcega**]{style="color:#990000"}
+
+```{r vector_hotspots_escarcega, dpi = 300, warning=FALSE, message=FALSE}
+deneggs::map_eggs_hotspots(betas = denmex::eggs_betas_04_campeche,
+                           locality = "Escarcega",
+                           cve_edo = "04",
+                           palette = rcartocolor::carto_pal,
+                           name = "SunsetDark",
+                           static_map = FALSE)
+```
+
 
 :::
 
@@ -682,4 +706,29 @@ deneggs::map_eggs_hotspots(betas = denmex::eggs_betas_04_campeche,
 
 ::: panel-tabset
 
+### [**Campeche**]{style="color:#990000"}
+
+```{r risk_ageb_campeche}
+# Step 1. calculate the risk ####
+denhotspots::risk_ageb(betas = denmex::eggs_betas_04_campeche,
+                       hotspots = denmex::den_hotspots,
+                       intensity_perc = 25,
+                       locality = "San Francisco Campeche",
+                       cve_edo = "04") |>
+  denhotspots::map_risk(staticmap = FALSE)
+
+```
+
+### [**Ciudad del Carmen**]{style="color:#990000"}
+
+```{r risk_ageb_carmen}
+# Step 1. calculate the risk ####
+denhotspots::risk_ageb(betas = denmex::eggs_betas_04_campeche,
+                       hotspots = denmex::den_hotspots,
+                       intensity_perc = 25,
+                       locality = "Ciudad del Carmen",
+                       cve_edo = "04") |>
+  denhotspots::map_risk(staticmap = FALSE)
+
+```
 :::
