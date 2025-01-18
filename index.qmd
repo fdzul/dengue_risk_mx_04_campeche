@@ -32,9 +32,9 @@ body {
 
 .wrapper {
     display: grid;
-    grid-gap: 2px;
-    grid-template-columns: 205px 205px 205px 450px;
-    grid-template-rows: 100px 100px 100px 130px;
+    grid-gap: 0px;
+    grid-template-columns: 205px 205px 205px 400px;
+    grid-template-rows: 100px 100px 100px 90px;
     background-color: #772953;
     color: "#772953";
   }
@@ -42,8 +42,8 @@ body {
   .box {
     background-color: #772953;
     color: "#772953";
-    border-radius: 2px;
-    padding: 5px;
+    border-radius: 0.5px;
+    padding: 0.5px;
     font-size: 100%;
 
   }
@@ -163,7 +163,7 @@ plotly::ggplotly(denhotspots::power_law_plot(x = data_pareto))  |> plotly::layou
 :::
 
 ::: {.box .d}
-```{r gauge_blocks_campeche,fig.align = "center", out.height='100%', out.width = '100%', fig.width= 1.5, fig.height=1}
+```{r gauge_blocks_campeche,fig.align = "center", out.height='100%', out.width = '100%'}
 y_hot <- hotspots |> dplyr::filter(hotspots_gi == 1)
 centroid <- rgeomex::blocks_ine20_mx_centroid |>
   sf::st_as_sf(coords = c("x", "y"), crs = 4326)
@@ -206,7 +206,7 @@ flexdashboard::gauge(round((nrow(y_hot)/nrow(y))*100, digits = 1),
 :::
 
 ::: {.box .f}
-```{r gauge_casos_campeche, out.height='90%', out.width = '90%', fig.align = "center"}
+```{r gauge_casos_campeche, out.height='100%', out.width = '100%', fig.align = "center"}
 
 y <- hotspots  |>
     sf::st_drop_geometry() |>
@@ -658,3 +658,28 @@ flexdashboard::gauge(round((sum(y_hot$n_cases)/sum(y$n_cases))*100, digits = 1),
 
 ::: 
  
+# [**Hotspots de Dengue**]{style="font-size:2pt"}
+
+::: panel-tabset
+
+### [**Campeche**]{style="color:#990000"}
+
+```{r vector_hotspots_campeche, dpi = 300, warning=FALSE, message=FALSE}
+deneggs::map_eggs_hotspots(betas = denmex::eggs_betas_04_campeche,
+                           locality = "San Francisco de Campeche",
+                           cve_edo = "04",
+                           palette = rcartocolor::carto_pal,
+                           name = "SunsetDark",
+                           static_map = FALSE)
+```
+
+
+
+:::
+
+
+# [**Escenarios Epidemiológicos**]{style="font-size:2pt"}
+
+::: panel-tabset
+
+:::
