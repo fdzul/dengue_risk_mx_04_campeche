@@ -14,6 +14,8 @@ mapview::mapviewOptions(default = TRUE,
 
 
 
+
+
 # [**Hotspots de Dengue**]{style="font-size:2pt"}
 
 ::: panel-tabset
@@ -22,6 +24,8 @@ mapview::mapviewOptions(default = TRUE,
 
 <html>
 <head>
+
+
 ```{=html}
 <style>
 body {
@@ -74,10 +78,14 @@ body {
   }
 </style>
 ```
+
+
 </head>
 <body>
 ::: wrapper
 ::: {.box .a}
+
+
 ```{r hotspots_dengue_campeche}
 # Step 1. extract the locality ####
 loc <- rgeomex::extract_locality(cve_edo = "04", 
@@ -95,9 +103,13 @@ mapview::mapview(hotspots,
                                                        name = "OrYel"))
 
 ```
+
+
 :::
 
 ::: {.box .b}
+
+
 ```{r forest_plot_paz, dpi = 300, fig.height= 5,fig.width = 7,fig.align = "center", out.height='100%', out.width = '100%',fig.show = "hold"}
  
 # Logistic Regression
@@ -122,9 +134,13 @@ result <- parameters::model_parameters(glm.fit,
 
 plotly::ggplotly(plot(result, size_text = 1))
 ```
+
+
 :::
 
 ::: {.box .c}
+
+
 ```{r power_law_plot_paz,dpi = 300, warning=FALSE, fig.align = "center", out.width = '100%',out.height='100%',fig.show = "hold"}
 # Step 7. make the function por calculate the cumulative ####
 funcumsum <- function(x){
@@ -160,9 +176,13 @@ data_pareto <- hotspots   |>
 plotly::ggplotly(denhotspots::power_law_plot(x = data_pareto))  |> plotly::layout(showlegend = FALSE)
 
 ```
+
+
 :::
 
 ::: {.box .d}
+
+
 ```{r gauge_blocks_paz,fig.align = "center", out.height='100%', out.width = '100%', fig.width= 1.5, fig.height=1}
 y_hot <- hotspots |> dplyr::filter(hotspots_gi == 1)
 centroid <- rgeomex::blocks_ine20_mx_centroid |>
@@ -180,9 +200,13 @@ flexdashboard::gauge(round((nrow(b_hot)/nrow(b_loc))*100, digits = 1),
                                                             "#FC8427",
                                                             "#E01A59")))
 ```
+
+
 :::
 
 ::: {.box .e}
+
+
 ```{r gauge_AGEB_paz, fig.align = "center", out.height='100%', out.width = '100%'}
 
 y <- hotspots  |>
@@ -203,9 +227,13 @@ flexdashboard::gauge(round((nrow(y_hot)/nrow(y))*100, digits = 1),
                                              "#FC8427",
                                              "#E01A59")))
 ```
+
+
 :::
 
 ::: {.box .f}
+
+
 ```{r gauge_casos_paz, out.height='90%', out.width = '90%', fig.align = "center"}
 
 y <- hotspots  |>
@@ -226,6 +254,8 @@ flexdashboard::gauge(round((sum(y_hot$n_cases)/sum(y$n_cases))*100, digits = 1),
                                              "#FC8427",
                                              "#E01A59")))
 ```
+
+
 :::
 :::
 </body>
